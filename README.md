@@ -1,2 +1,2 @@
 # AdvancedC
-Advanced C PRgramming 
+Advanced C Programming 
