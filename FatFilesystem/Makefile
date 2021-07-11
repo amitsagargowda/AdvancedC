@@ -1,8 +1,7 @@
-all: myfilesys
+all: fat1
 
-myfilesys: myfilesys.c
-	gcc -Wall myfilesys.c `pkg-config fuse3 --cflags --libs` -o myfilesys
-
+fat1: fat1.c
+	gcc -g -O0 fat1.c `pkg-config fuse3 --cflags --libs` -o fat1 -lm
 
 clean:
-	rm -rf myfilesys
+	rm -rf fat1
