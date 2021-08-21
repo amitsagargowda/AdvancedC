@@ -1,21 +1,10 @@
-CFLAGS_DBUS = $(shell pkg-config --cflags --libs dbus-1)
-CFLAGS_DBUS_GLIB = $(shell pkg-config --cflags --libs dbus-glib-1)
-CFLAGS_GIO  = $(shell pkg-config --cflags --libs gio-2.0)
+all: dbus-ping-listen dbus-ping-send
 
-CFLAGS = -g -Wall -Werror
+dbus-ping-listen: dbus-ping-listen.c
+	gcc -o $@ $< `pkg-config --cflags --libs dbus-1 dbus-glib-1`
 
-
-all: dbus-server dbus-client
-
-dbus-server: dbus-server.c
-	gcc $< -o $@ $(CFLAGS) $(CFLAGS_DBUS) $(CFLAGS_DBUS_GLIB)
-
-dbus-client: dbus-client.c
-	gcc $< -o $@ $(CFLAGS) $(CFLAGS_GIO)
+dbus-ping-send: dbus-ping-send.c
+	gcc -o $@ $< `pkg-config --cflags --libs dbus-1 dbus-glib-1`
 
 clean:
-	rm -f dbus-server
-	rm -f dbus-client
-
-
-.PHONY: all clean
+	rm -rf  dbus-ping-listen dbus-ping-send
