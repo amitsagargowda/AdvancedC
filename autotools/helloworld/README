@@ -1,0 +1,9 @@
+This is a demonstration package for GNU Autotools
+
+# autoreconf --install
+
+# ./configure
+
+# make
+
+# make distcheck
