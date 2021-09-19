@@ -3,7 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#define NUMALLOC (10)
+char ARRAY[100*1024*1024];
+#define NUMALLOC (127*1024)
 int main()
 {
 	void* ptr[NUMALLOC];
@@ -19,10 +20,13 @@ int main()
 	}
 
 	for(i=0;i<NUMALLOC;i++){
-		printf("Init Memory\n");
-		memset(ptr[i],0xFF,1024*1024*1024);
+		printf("Init Memory Started\n");
+	//	memset(ptr[i],0xFF,1024*1024*1024);
+		memcpy(ARRAY,ptr[i],sizeof(ARRAY));
+		printf("Init Memory Ended\n");
 		sleep(5);
 	}
 	while(1);
+
 	return 0;
 }
